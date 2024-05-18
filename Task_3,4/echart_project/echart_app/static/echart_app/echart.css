@@ -1,0 +1,43 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.card {
+    width: 100%;
+    min-width: 300px;
+    max-width: 600px;
+}
+.card-img-top{
+    padding: 2px;
+}
+
+.alarm-state {
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4);
+}
+
+.modal-lg {
+    max-width: 80%;
+}
+
+.alarm-faulty {
+    background-color: #FF6E4C;
+}
+
+.alarm-active {
+    background-color: #6B92C9;
+}
+
+.alarm-inactive {
+    background-color: #D1D1D1;
+}
