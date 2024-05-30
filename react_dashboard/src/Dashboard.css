@@ -1,0 +1,44 @@
+body {
+    background-image: url('https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Copilot-for-M365-Hero-Background?resMode=sharp2&op_usm=1.5');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.img-small {
+    max-width: 75%;
+    max-height: 75%;
+    height: auto;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.card {
+    width: 326px;
+    height: 88px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90,
+            97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97,
+            105, 0.1);
+    transition: all .3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.2), 0 0.9375rem 1.40625rem rgba(90,
+            97, 105, 0.2), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.22), 0 0.125rem 0.1875rem rgba(90, 97,
+            105, 0.2);
+    transform: translate3d(0px, -2px, 0px);
+  }
+
+.card h5 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-family: sans-serif;
+    color: black;
+    padding: 1rem;
+    /* TODO height: 1.5; */
+}

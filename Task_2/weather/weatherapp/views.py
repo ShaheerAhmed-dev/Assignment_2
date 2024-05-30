@@ -8,7 +8,7 @@ def weather(request, weather_type):
         'Rain': ('Rainy', 'rain-svgrepo-com.svg'),
     }
 
-    title, image = weather_mapping.get(weather_type, ('Unknown', 'default-svgrepo-com.svg'))
+    title, image = weather_mapping.get(weather_type, ('Unknown', 'sun-sunny-svgrepo-com.svg'))
 
     context = {
         'title': title,

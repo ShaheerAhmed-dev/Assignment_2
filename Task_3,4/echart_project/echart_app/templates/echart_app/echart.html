@@ -2,85 +2,80 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'echart_app/echart.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'echart_app/echart.css' %}" />
     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-</head>
-<body>
-    <div class="container ">
-        <div class="card{% if status == 'faulty' %} alarm-state{% endif %} p-2">
-            <h5 class="card-title text-center">FCU-VAV</h5>
-            <div id="echart" class="card-img-top" style="width: 100%; height: 300px;"></div>
-            <form class="row row-cols-lg-auto g-3 align-items-center" method="POST" action="{% url 'trigger_alarm' %}">
-                {% csrf_token %}
-                <div class="col-12">
-                    <label for="status">Status</label>
-                    
-                </div>
-                <div class="col-12">
-                    <div class="input-group">
-                        <select name="status" id="status" class="form-control">
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                            <option value="faulty">Fault</option>
-                        </select>
-                    </div>
-                  </div>
-              
-                
-              
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Trigger</button>
-                </div>
-              </form>
-            <button class="btn btn-info mt-3" data-toggle="modal" data-target="#statusModal">View Details</button>
-        </div>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card{% if status == 'faulty' %}{% endif %} p-2">
+        <h5 class="card-title text-center">FCU-VAV</h5>
+        <div id="echart" class="card-img-top" style="width: 100%; height: 300px;"></div>
+        <form class="row row-cols-lg-auto g-3 align-items-center" method="POST" action="{% url 'trigger_alarm' %}">
+          {% csrf_token %}
+          <div class="col-12">
+            <label for="status">Status</label>
+          </div>
+          <div class="col-12">
+            <div class="input-group">
+              <select name="status" id="status" class="form-control">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="faulty">Fault</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Trigger</button>
+          </div>
+        </form>
+        <button class="btn btn-info mt-3" data-toggle="modal" data-target="#statusModal">View Details</button>
+      </div>
     </div>
 
     <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="statusModalLabel">FCU-VAV</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Equipment</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Dirty Filter Alarm</th>
-                                <th scope="col">Fan Speed</th>
-                                <th scope="col">SA Temperature</th>
-                                <th scope="col">Last Updated</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for alarm in alarms %}
-                                <tr class="alarm-{{ alarm.Status }} {% if alarm.Status == 'faulty' %}alarm-state{% endif %}">
-                                    <td>{{ alarm.Equipment }}</td>
-                                    <td>{{ alarm.Status }}</td>
-                                    <td>{{ alarm.Dirty_Filter_Alarm }}</td>
-                                    <td>{{ alarm.Fan_Speed }}</td>
-                                    <td>{{ alarm.SA_Temperature }}</td>
-                                    <td>{{ alarm.Last_Updated }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="statusModalLabel">FCU-VAV</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Equipment</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Dirty Filter Alarm</th>
+                  <th scope="col">Fan Speed</th>
+                  <th scope="col">SA Temperature</th>
+                  <th scope="col">Last Updated</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for alarm in alarms %}
+                  <tr class="alarm-{{ alarm.Status }} {% if alarm.Status == 'faulty' %}{% endif %}">
+                    <td>{{ alarm.Equipment }}</td>
+                    <td>{{ alarm.Status }}</td>
+                    <td>{{ alarm.Dirty_Filter_Alarm }}</td>
+                    <td>{{ alarm.Fan_Speed }}</td>
+                    <td>{{ alarm.SA_Temperature }}</td>
+                    <td>{{ alarm.Last_Updated }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -147,5 +142,5 @@
 
         myChart.setOption(option);
     </script>
-</body>
+  </body>
 </html>

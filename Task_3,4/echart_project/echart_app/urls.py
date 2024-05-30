@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import trigger_alarm
+from .views import TriggerAlarmView
 
 urlpatterns = [
-    path('triggeralarm/', trigger_alarm, name='trigger_alarm'),
+    path('triggeralarm/', TriggerAlarmView.as_view(), name='trigger_alarm'),
 ]

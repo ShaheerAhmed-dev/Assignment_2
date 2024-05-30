@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<title>dashboard</title>
+<metadata>
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>dashboard</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g transform="translate(0 -604.36)">
+<rect y="604.36" width="192" height="256"/>
+<rect x="256" y="796.36" width="192" height="256"/>
+<rect y="924.36" width="192" height="128"/>
+<rect x="256" y="604.36" width="192" height="128"/>
+</g>
+</svg>
